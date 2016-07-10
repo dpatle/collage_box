@@ -4,8 +4,10 @@
     </div>
     <div id="history-bottom-wrapper">
         <div class="recent-photos" ng-repeat="collage in collages">
-            <img ng-src="collage.url"/>
+            <img src="{{collage.url}}"/>
+        </div>
+        <div id="no-data-message" ng-if="noDataFound">
+            <h1>No recent collage available</h1>
         </div>
     </div>
-
 </div>

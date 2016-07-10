@@ -39,8 +39,8 @@
                 }
                 if(isAlbumAvailable) {
                     facebookGraph.getAlbumPhotos(albumId).then(function (response) {
-                        var photoData = response.photos.data;
-                        if(photoData.length===0) {
+                        var photoData = response.photos ? response.photos.data : null;
+                        if(!photoData || photoData.length===0) {
                             popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
                         } else {
                             var collage = {};
