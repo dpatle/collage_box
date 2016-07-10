@@ -1,0 +1,345 @@
+#new-view {
+    overflow: hidden;
+}
+
+#slide-wrapper {
+    position: absolute;
+    width: 300%;
+    top: 0px;
+    height: 100%;
+    -webkit-transition: left 0.2s linear;
+    -moz-transition: left 0.2s linear;
+    -ms-transition: left 0.2s linear;
+    -o-transition: left 0.2s linear;
+    transition: left 0.2s linear;
+}
+
+.new-page-slide {
+    position: absolute;
+    top: 0px;
+    width: 33.33%;
+    height: 100%;
+    border-left: 2px solid #ff9c00;
+}
+
+#new-slide-1 {
+    left: 0px;
+}
+
+#new-slide-2 {
+    left: 33.33%;
+}
+
+#new-slide-3 {
+    left: 66.66%;
+}
+
+.slide-top-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 80px;
+    color: #ff9c00;
+    background-color: #f2f2f2;
+    font-family: ubuntu-bold;
+    box-shadow: inset -1px -1px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border-bottom: 2px solid #ff9c00;
+}
+
+.slide-head-number {
+    background-color: #ff9c00;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 80px;
+    font-size: 35px;
+    color: white;
+    text-align: center;
+    line-height: 80px;
+    box-shadow: 1px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.slide-heading {
+    position: absolute;
+    font-size: 20px;
+    top: 0px;
+    left: 100px;
+    line-height: 80px;
+}
+
+#select-photo-container {
+    position: absolute;
+    top: 90px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    text-align: center;
+    overflow-y: auto;
+}
+
+.photo-tile {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin: 10px;
+    vertical-align: top;
+    cursor: pointer;
+    background-color: #f5f5f5;
+}
+
+.photo-tile:first-of-type {
+    margin-left: -38px;
+}
+
+.tile-background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 0px;
+    transition: all 0.2s linear;
+}
+
+
+.photo-tile.selected .tile-background {
+    transform: scale(0.85,0.85);
+}
+
+
+.selection-check {
+    font-family: ubuntu-icon;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    color: gray;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 18px;
+    top: 7px;
+    left: 7px;
+    opacity: 0;
+}
+
+
+.photo-tile:hover .selection-check {
+    opacity: 1;
+}
+
+.photo-tile.selected .selection-check {
+    background-color: #4285f4;
+    color: white;
+    opacity: 1;
+}
+
+#collage-grid-selector {
+    position: absolute;
+    border: 1px solid #D8D8D8;
+    top: 100px;
+    left: 20px;
+    width: 298px;
+    border-radius: 5px;
+    height: 140px;
+    overflow: auto;
+    text-align: center;
+    overflow: hidden;
+}
+
+.selector-header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    height: 35px;
+    color: #ff9c00;
+    background-color: #f2f2f2;
+    font-family: ubuntu-bold;
+    font-size: 15px;
+    line-height: 35px;
+    text-align: left;
+    border-bottom: 1px solid #D8D8D8;
+    padding-left: 10px;
+}
+
+#grid-prototype-wrapper {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    top: 35px;
+    overflow: hidden;
+}
+.grid-prototype {
+    background-image:url(../../content/images/grid-proto.png);
+    width: 57px;
+    height: 57px;
+    background-size: 240px;
+    position: relative;
+    display: inline-block;
+    margin: 7px 7px 2px 5px;
+    cursor: pointer;
+}
+
+.grid-prototype:first-of-type {
+    margin-left: -59px;
+}
+
+.grid-prototype:hover, .grid-prototype.selected {
+    -ms-background-position-y: 58px;
+    background-position-y: 58px;
+}
+
+#collage-border-picker {
+
+    position: absolute;
+
+    border: 1px solid #D8D8D8;
+
+    top: 260px;
+
+    left: 20px;
+
+    width: 298px;
+
+    border-radius: 5px;
+
+    height: 112px;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+#color-option-wrapper {
+
+    position: absolute;
+
+    top: 55px;
+
+    left: 21px;
+
+    height: 32px;
+
+    width: 256px;
+
+    background-color: #ed7000;
+}
+
+.color-palate {
+    width: 32px;
+    height: 32px;
+    top: 0px;
+    -webkit-transition: transform 0.2s linear;
+    -moz-transition: transform 0.2s linear;
+    -ms-transition: transform 0.2s linear;
+    -o-transition: transform 0.2s linear;
+    transition: transform 0.2s linear;
+    position: absolute;
+    cursor:pointer;
+}
+
+.color-palate.selected,  .color-palate:hover {
+    transform:scale(0.8);
+}
+
+#collage-photo-picker {
+    position: absolute;
+    border: 1px solid #D8D8D8;
+    top: 393px;
+    left: 20px;
+    width: 298px;
+    border-radius: 5px;
+    bottom: 20px;
+    text-align: center;
+    overflow: auto;
+}
+
+.drag-photo {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    cursor: -webkit-grab;
+    background-size: cover;
+}
+
+.drag-photo:first-of-type {
+    margin-left: -59px;
+}
+
+#drag-photo-wrapper {
+    position: absolute;
+    top: 35px;
+    width: 100%;
+    left: 0px;
+    bottom: 0px;
+    overflow: auto;
+}
+
+#collage-main-container {
+
+    position: absolute;
+
+    top: 100px;
+
+    left: 340px;
+
+    right: 20px;
+
+    bottom: 20px;
+
+    border: 1px solid #D8D8D8;
+
+    border-radius: 5px;
+}
+
+#collage {
+
+    position: absolute;
+
+    width: 680px;
+
+    height: 450px;
+
+    left: 50%;
+
+    top: 50%;
+
+    margin-left: -340px;
+
+    margin-top: -225px;
+
+    border: 3px solid;
+
+
+}
+
+.inner-tile {
+    position: absolute;
+}
+
+.tile-picture {
+    background-color: #FFC364;
+    position: absolute;
+    top:3px;
+    left: 3px;
+    bottom: 3px;
+    right: 3px;
+    overflow: hidden;
+}
+
+#collage-share-container {
+    position: absolute;
+    top: 82px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    text-align: center;
+    padding-top: 50px;
+}

@@ -1,0 +1,284 @@
+html{
+    min-width: 900px;
+    background-color: black;width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    min-width: 1200px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#application-view{
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 100%;
+}
+#background-picture{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../content/images/background.jpg) center center no-repeat;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    z-index: -1;
+}
+
+#background-pattern{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../../content/images/pattern_stripe.png) center center repeat;
+}
+
+
+svg {
+    display: block
+}
+.icon {
+    width: 100%;
+    height: 100%;
+    -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+.icon-black {
+    fill: #000
+}
+.icon-red {
+    fill: #ee0b41
+}
+.icon-darkRed {
+    fill: #ab052c
+}
+.icon-white {
+    fill: #fff
+}
+.icon-gray {
+    fill: #838383
+}
+#icon-surprise-me .path1,
+#icon-surprise-me .path2,
+#icon-surprise-me .path3,
+#icon-surprise-me .path4,
+#icon-surprise-me .path5,
+#icon-surprise-me .path6,
+#icon-surprise-me .path7,
+#icon-surprise-me .path8,
+#icon-surprise-me .path9 {
+    fill: #ee0b41
+}
+#icon-surprise-me .path10,
+#icon-surprise-me .path11,
+#icon-surprise-me .path12 {
+    fill: #fff
+}
+#icon-random-1 .path1 {
+    fill: #fff
+}
+#icon-random-1 .path2 {
+    fill: #ee0b41
+}
+#icon-random-2 .path1 {
+    fill: #fff
+}
+#icon-random-2 .path2 {
+    fill: #ab052c
+}
+.random-icon-container {
+    width: 20px;
+    height: 20px
+}
+.random-icon-container .icon-random-1,
+.random-icon-container .icon-random-2 {
+    width: 23px;
+    height: 15px;
+    margin: 2px 0 0 -1px
+}
+
+@keyframes fade-in-animation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes crawl-down-animation{
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+        -webkit-transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+        -webkit-transform: translateY(0px);
+    }
+}
+
+
+.random-icon-container .icon {
+    position: absolute;
+    left: 0;
+    top: 0;
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+    opacity: 0
+}
+.random-icon-container .icon.visible {
+    opacity: 1
+}
+
+#application-spinner{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 99;
+    background-color: rgba(50,50,50,0.8);
+    opacity: 0.8;
+    background-repeat: no-repeat;
+    background-size: 60px;
+    background-position: center;
+    background-image: url(../../content/images/loading.gif);
+}
+
+
+.home-login-button{
+    display: inline-block;
+    margin-top: 150px;
+    position: relative;
+    width: 230px;
+    height: 43px;
+    padding: 15px 0 0 15px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font: normal 14px/14px "ubuntu-bold";
+    color: #fff;
+    background-color: #ee0b41;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    -moz-transition: background-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: background-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: background-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: background-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    animation-name: fade-in-animation;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.home-login-button:after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background-color: #ab052c;
+    z-index: 0;
+    -moz-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -o-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    -webkit-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.home-login-button:hover{
+    color:#ee0b41;
+    background-color:#f2f2f2;
+}
+
+.home-login-button:hover:after{
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -webkit-transform: translateY(3px);
+    transform: translateY(3px);
+}
+
+.home-login-button.yellow {
+    background-color: #ff9c00;
+}
+
+.home-login-button.yellow:after{
+    background-color: #ed7000;
+}
+
+.home-login-button.yellow:hover{
+    color: #ff9c00;
+    background-color:#f2f2f2;
+}
+
+
+.navigation-button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 15px;
+    background-color: #ff9c00;
+    border-radius: 50%;
+    font-family: ubuntu-icon;
+    color: white;
+    cursor: pointer;
+    line-height: 25px;
+    text-align: center;
+    font-size: 50px;
+}
+.navigation-button:hover {
+    background-color: #ed7000;
+}
+
+.next-button {right: 50px;
+    transform: rotate(90deg);
+}
+
+.prev-button {
+    right: 110px;
+    transform: rotate(-90deg);
+}
+
+.done-button {
+    right: 50px;
+    line-height: 35px;
+}
+
+.edit-button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    top: -2px;
+    right: 0px;
+    color: #ff9c00;
+    border-radius: 50%;
+    font-family: ubuntu-icon;
+    cursor: pointer;
+    line-height: 25px;
+    text-align: center;
+    font-size: 35px;
+}
+
+.edit-button:hover {
+    color: #ed7000;
+}

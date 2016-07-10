@@ -1,0 +1,31 @@
+<div ng-if="$root.location !== '/'" id="navigator-container">
+    <div id="navigator-logo-container">
+        <a href="#/Home">
+        <collage-logo id="navigator-logo" text="false"></collage-logo>
+        </a>
+    </div>
+    <div id="navigator-option-container">
+        <a href="#/New" title="Create new collage">
+        <div class="navigator-options">
+            <span class="navigator-icons">+</span>
+            <span class="navigator-arrow">&gt;</span>
+        </div>
+            </a>
+        <a href="#/History"  title="View recent collages">
+        <div class="navigator-options">
+            <span class="navigator-icons">}</span>
+            <span class="navigator-arrow">&gt;</span>
+        </div>
+            </a>
+        <a href="#/About"  title="Know about collage box">
+        <div class="navigator-options">
+            <span class="navigator-icons">=</span>
+            <span class="navigator-arrow">&gt;</span>
+        </div>
+            </a>
+    </div>
+    <div id="logout-button">
+        <div class="profile-picture" ng-style="$root.logoutBackground"></div>
+        <span class="logout-text" ng-click="doLogout()">Log Out</span>
+    </div>
+</div>

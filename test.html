@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body>
+
+<input type="text" id="urlInput"/>
+<button onclick="sendRequesst()" id="urlButton">Get hosted image</button>
+<img id="testImage"/>
+<script>
+    function sendRequesst() {
+        convertImgToDataURLviaCanvas($("#urlInput").val(),function(data){
+            var data = {
+                blob : data,
+                id : 'testURL' + new Date().getTime() + ".jpeg"
+            };
+
+           /* $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/saveBlobImage",
+                data: data,
+                success: function(data){
+                    $('#testImage').attr('src',data);
+                }
+            });*/
+            $.post("http://localhost:8080/saveBlobImage",
+                    data).done(function (data) {
+                        console.log(data);
+                    }).fail(function (err) {
+                        console.log(err);
+                    });
+
+
+
+        },undefined);
+
+    }
+
+    function convertImgToDataURLviaCanvas(url, callback, outputFormat){
+        var img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = function(){
+            var canvas = document.createElement('CANVAS');
+            var ctx = canvas.getContext('2d');
+            var dataURL;
+            canvas.height = this.height;
+            canvas.width = this.width;
+            ctx.drawImage(this, 0, 0);
+            dataURL = canvas.toDataURL(outputFormat);
+            callback(dataURL);
+            canvas = null;
+        };
+        img.src = url;
+    }
+</script>
+</body>
+</html>

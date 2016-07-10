@@ -1,0 +1,64 @@
+<div class="view-page-wrapper" id="new-view">
+<div id="slide-wrapper" ng-style="slidePosition">
+    <div id="new-slide-1" class="new-page-slide">
+        <div class="slide-top-header">
+            <span class="slide-head-number">1</span>
+            <span class="slide-heading">Select Your Photos</span>
+            <div class="navigation-button next-button" ng-click="switchSlideView(2);">]</div>
+        </div>
+        <div id="select-photo-container" scroll-end on-end="appendSelectivePhotos();">
+            <div id="photo-tile-{{$index}}" class="photo-tile" ng-repeat="photo in selectivePhotos track by $index" ng-class="photo.isSelected && 'selected'" ng-click="photo.isSelected = !photo.isSelected">
+                <div class="tile-background" ng-style="photo.urlStyle"></div>
+                <div class="selection-check">%</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="new-slide-2" class="new-page-slide">
+        <div class="slide-top-header">
+            <span class="slide-head-number">2</span>
+            <span class="slide-heading">Customize The Collage</span>
+            <div class="navigation-button next-button" ng-click="switchSlideView(3);">]</div>
+            <!--<div class="navigation-button prev-button" ng-click="switchSlideView(1);">]</div>-->
+        </div>
+        <div id="collage-grid-selector">
+            <div class="selector-header">Select Grid Prototype</div>
+            <div id="grid-prototype-wrapper">
+                <div class="grid-prototype" ng-repeat="grid in gridPrototypes track by $index" ng-style="grid.style" ng-click="selectGridPrototype($index);"  ng-class="grid.isSelected && 'selected'"></div>
+            </div>
+        </div>
+        <div id="collage-border-picker">
+            <div class="selector-header">Select Border Color</div>
+            <div id="color-option-wrapper">
+                <div class="color-palate" ng-repeat="colorCube in colorCubes track by $index" ng-style="colorCube.style" ng-click="selectColorPalate($index);"  ng-class="colorCube.isSelected && 'selected'"></div>
+            </div>
+        </div>
+        <div id="collage-photo-picker">
+            <div class="selector-header">Drag Photos To Collage</div>
+            <div class="edit-button" ng-click="switchSlideView(1);">e</div>
+            <div id="drag-photo-wrapper">
+                <div draggable="true" ondragstart="drag(event)" class="drag-photo" ng-repeat="photo in selectivePhotos track by $index" ng-if="photo.isSelected"  ng-style="photo.urlStyle"></div>
+            </div>
+        </div>
+
+        <div id="collage-main-container">
+            <div id="collage" ng-repeat="prototype in gridPrototypes track by $index" ng-if="prototype.isSelected" ng-style="currentBorderColor">
+                <div class="inner-tile" ng-repeat="tile in prototype.tiles" ng-style="tile.style" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div class="tile-picture"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="new-slide-3" class="new-page-slide">
+        <div class="slide-top-header">
+            <span class="slide-head-number">3</span>
+            <span class="slide-heading">Post On Facebook</span>
+            <div class="navigation-button done-button" ng-click="postCollageOnFacebook();">%</div>
+        </div>
+        <div id="collage-share-container"></div>
+    </div>
+</div>
+</div>

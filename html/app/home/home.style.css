@@ -1,0 +1,188 @@
+.view-page-wrapper {
+    position: absolute;
+    background-color: white;
+    left: 94px;
+    right: 20px;
+    top: 20px;
+    bottom: 20px;
+    overflow: auto;
+    white-space: pre-wrap;
+}
+
+#home-title{
+
+    background-color: #d9d9d9;
+
+    position: absolute;
+
+    width: 100%;
+
+    height: 150px;
+
+    top: 0px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+#home-title span{
+
+    color: #ee0b41;
+
+    letter-spacing: 0.2em;
+
+    font-family: ubuntu-bold;
+
+    font-size: 22px;
+
+    line-height: 150px;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+}
+
+#home-bottom-wrapper {
+    position: absolute;
+    top:150px;
+    bottom: 0px;
+    width: 75%;
+    left: 12%;
+}
+
+#profile-tile {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 25%;
+    margin-left: -150px;
+    margin-top: -150px;
+    border-radius: 0 40px;
+}
+
+.tile-block {
+    width: 96px;
+    height: 96px;
+    margin: 0px;
+    position: absolute;
+    background-size: 295px;
+    background-repeat: no-repeat;
+    opacity: 0;
+    animation-name: fade-in-animation;
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    box-shadow: 0 0 2px #AB6800;
+    background-color: #ffffff;
+}
+
+#block1 {
+    left: 2px;
+    top:2px;
+    background-position: 0% 0%;
+    animation-delay: 1.4s;
+}
+#block2 {
+    left: 102px;
+    top:2px;
+    background-position: center 0%;
+    animation-delay: 1.6s;
+}
+#block3 {
+    left: 202px;
+    top: 2px;
+    background-position: 100% 0%;
+    border-radius: 0px 40px 0px 0px;
+    animation-delay: 1.8s;
+}
+#block4 {
+    left: 2px;
+    top:102px;
+    background-position: 0% center;
+    animation-delay: 1.2s;
+}
+#block5 {
+    left: 102px;
+    top:102px;
+    background-position: center;
+    animation-delay: 1.4s;
+}
+#block6 {
+    left: 202px;
+    top:102px;
+    background-position: 100% center;
+    animation-delay: 1.6s;
+}
+#block7 {
+    left: 2px;
+    top:202px;
+    background-position: 0% 100%;
+    border-radius: 0px 0px 0px 40px;
+    animation-delay: 1s;
+}
+#block8 {
+    left: 102px;
+    top:202px;
+    background-position: center 100%;
+    animation-delay: 1.2s;
+}
+#block9 {
+    left: 202px;
+    top:202px;
+    background-position: 100% 100%;
+    -webkit-animation-delay: 1.4s;
+    -moz-animation-delay: 1.4s;
+    -o-animation-delay: 1.4s;
+    animation-delay: 1.4s;
+}
+
+#home-light-background {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 50%;
+    height: 200px;
+    margin-top: -100px;
+    background-image: url(../../content/images/back-yellow.jpg);
+    border-radius: 60px 0px;
+    opacity: 0;
+    -webkit-animation-delay: 0.5s;
+    -moz-animation-delay: 0.5s;
+    -o-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    animation-name: fade-in-animation;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    box-shadow: inset 3px 3px 15px rgba(0,0,0,0.4);
+    background-size: cover;
+}
+#home-button-container {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 50%;
+    left: 67%;
+    margin-left: -150px;
+    margin-top: -150px;
+    animation-name: crawl-down-animation;
+    animation-duration: 1s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    transform: translateX(-40px);
+    -webkit-transform: translateY(-40px);
+}
+
+#create-new-button {
+    margin: 0px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -100px;
+    width: 200px;
+    text-align: center;
+    margin-top: -22px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+}

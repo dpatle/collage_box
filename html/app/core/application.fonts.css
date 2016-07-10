@@ -1,0 +1,22 @@
+@font-face {
+    font-family: ubuntu-bold;
+    src: url(../../content/fonts/ubuntu-bold-webfont.woff2);
+}
+
+@font-face {
+    font-family: ubuntu-light;
+    src: url(../../content/fonts/ubuntu-light-webfont.woff2);
+}
+
+@font-face {
+    font-family: ubuntu-regular;
+    src: url(../../content/fonts/ubuntu-regular-webfont.woff2);
+}
+
+/*
+Character map - http://www.1001fonts.com/modern-pictograms-font.html#character-map
+*/
+@font-face {
+    font-family: ubuntu-icon;
+    src: url(../../content/fonts/modernpics.otf);
+}

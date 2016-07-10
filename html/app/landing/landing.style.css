@@ -1,0 +1,164 @@
+#landing-logo-container
+{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 100px;
+}
+
+
+#landing-subtitle{
+    font-size: 20px;
+    line-height: 26px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-family: ubuntu-bold;
+    margin: 25px 0px;
+    position: relative;
+    display: block;
+    opacity: 0;
+    animation-name: fade-in-animation;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.logo-element{
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    animation-name: fade-in-animation;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.logo-box-outer{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    background-color: #ee0b41;
+    border-radius: 0 10px;
+    vertical-align: top;
+}
+
+.logo-box-inner1{
+    background: white;
+    position: absolute;
+    width: 26px;
+    height: 20px;
+    left: 5px;
+    top: 5px;
+}
+.logo-box-inner2{
+    background: white;
+    position: absolute;
+    width: 20px;
+    height: 26px;
+    right: 5px;
+    top: 5px;
+    border-radius: 0px 7px 0px 0px;
+}
+.logo-box-inner3{
+    background: white;
+    position: absolute;
+    width: 20px;
+    height: 26px;
+    left: 5px;
+    bottom: 5px;
+    border-radius: 0px 0px 0px 7px;
+}
+.logo-box-inner4{
+    background: white;
+    position: absolute;
+    width: 26px;
+    height: 20px;
+    right: 5px;
+    bottom: 5px;
+}
+
+.logo-name-container{
+    display: inline-block;
+    height: 60px;
+    vertical-align: top;
+}
+
+.logo-span{
+    font: normal 40px "ubuntu-bold";
+    color: white;
+    display: inline-block;
+    line-height: 60px;
+}
+
+.logo-span-1{
+    padding-left: 10px;
+    font: normal 40px "ubuntu-light";
+}
+
+#landing-frames-container{
+    width: 100%;
+    position: relative;
+    display: block;
+    text-align: center;
+}
+
+
+@keyframes move-frames {
+    from {
+        -webkit-transform : translateX(-10px);
+        transform : translateX(-10px);
+        opacity: 0;
+    }
+    to {
+        -webkit-transform : translateX(0px);
+        transform : translateX(0px);
+        opacity: 1;
+    }
+}
+
+.landing-frames{
+    width: 140px;
+    height: 160px;
+    position: relative;
+    display: inline-block;
+    background: whitesmoke;
+    margin: 0px 5px;
+    border: 5px solid #fff;
+    background-size: cover;
+    background-position: center;
+    -webkit-transform : translateX(-10px);
+    transform : translateX(-10px);
+    opacity: 0;
+    animation-name: move-frames;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+#landing-frame-1{
+    background-image: url(https://unsplash.it/130/150/?random&1);
+    animation-delay: 1s;
+}
+
+#landing-frame-2{
+    background-image: url(https://unsplash.it/130/150/?random&2);
+    animation-delay: 1.15s;
+}
+
+#landing-frame-3{
+    background-image: url(https://unsplash.it/130/150/?random&3);
+    animation-delay: 1.3s;
+}
+
+#landing-frame-4{
+    background-image: url(https://unsplash.it/130/150/?random&4);
+    animation-delay: 1.45s;
+}
+
+#landing-frame-5{
+    background-image: url(https://unsplash.it/130/150/?random&5);
+    animation-delay: 1.6s;
+}

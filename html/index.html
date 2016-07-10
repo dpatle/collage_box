@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Collage Box</title>
+
+    <!-- styles -->
+    <link media="screen" rel="stylesheet" type="text/css" href="app/core/application.fonts.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="app/layout/layout.style.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="app/layout/navigator.style.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="app/landing/landing.style.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="app/home/home.style.css">
+    <link media="screen" rel="stylesheet" type="text/css" href="app/new/new.style.css">
+
+    <!-- load facebook sdk -->
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <!-- drag event listner -->
+    <script src="app/new/drag.event.helper.js"></script>
+
+    <!-- required libraries -->
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/html2canvas.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/angular-route.min.js"></script>
+
+    <!-- bootstrapping -->
+    <script src="app/app.module.js"></script>
+
+    <!-- facebook -->
+    <script src="app/facebook/authentication.helper.js"></script>
+    <script src="app/facebook/graph.factory.js"></script>
+
+
+    <!-- layout -->
+    <script src="app/layout/navigator.directive.js"></script>
+    <script src="app/layout/background.directive.js"></script>
+    <script src="app/layout/logo.directive.js"></script>
+
+    <!-- landing -->
+    <script src="app/landing/landing.controller.js"></script>
+
+    <!-- Home  -->
+    <script src="app/home/home.controller.js"></script>
+
+    <!-- helper -->
+    <script src="app/helper/helper.popup.factory.js"></script>
+
+    <!-- New -->
+    <script src="app/imagebank/imagebank.factory.js"></script>
+    <script src="app/new/new.controller.js"></script>
+    <script src="app/new/canvas.directive.js"></script>
+    <script src="app/new/scrollend.directive.js"></script>
+
+    <!-- core scripts -->
+    <script src="app/core/route.config.js"></script>
+    <script src="app/core/application.controller.js"></script>
+    <script src="app/core/constants.config.js"></script>
+
+    <!-- Run the app -->
+    <script src="app/core/init.run.js"></script>
+
+
+</head>
+
+<body>
+<div id="application-view" ng-controller="applicationCtrl as vm">
+    <background></background>
+    <div ng-view></div>
+    <navigator></navigator>
+    <div id="application-spinner" ng-show="$root.showSpinner"></div>
+</div>
+<div id="fb-root"></div>
+</body>
+</html>
