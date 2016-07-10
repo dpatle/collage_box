@@ -12,7 +12,7 @@
         var imageBankAPI = {};
 
         imageBankAPI.getHostedURLForImage = function(imageUrl,id) {
-            var APIEndPoint = appConfig.hostName+"saveFacebookImage";
+            var APIEndPoint = appConfig.apiEndPoint+"saveFacebookImage";
             var promise = new Promise(function(resolve,reject) {
                 $.get(APIEndPoint,
                     {
@@ -38,7 +38,7 @@
             };
 
         imageBankAPI.storeBlobToDisk = function(blobURL,id) {
-                var APIEndPoint = appConfig.hostName+"saveBlobImage";
+                var APIEndPoint = appConfig.apiEndPoint+"saveBlobImage";
                 var promise = new Promise(function(resolve,reject) {
                     $.post(APIEndPoint,
                         {

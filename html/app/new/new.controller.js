@@ -456,7 +456,7 @@
                         var blobURL = canvas.toDataURL();
                         var blobId =  "content/images/photo_library/collage_image_" + new Date().getTime()+".jpeg";
                         imageBank.storeBlobToDisk(blobURL,blobId).then(function(actualURL){
-                            $scope.collageURLToShare = actualURL;
+                            $scope.collageURLToShare = hostName+actualURL;
                             $rootScope.$apply(function(){
                                 $scope.currentSlideView = 3;
                                 $rootScope.showSpinner = false;
