@@ -6,9 +6,9 @@
     angular.module('app')
         .controller('historyCtrl',historyCtrlFunction);
 
-    historyCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig'];
+    historyCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory'];
 
-    function historyCtrlFunction($scope,facebookGraph,$rootScope,appConfig){
+    function historyCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory){
         $scope.noDataFound = false;
         $scope.collages = [];
         var fetchUserInfo = function() {
@@ -41,7 +41,10 @@
                     facebookGraph.getAlbumPhotos(albumId).then(function (response) {
                         var photoData = response.photos ? response.photos.data : null;
                         if(!photoData || photoData.length===0) {
+                            $scope.noDataFound = true;
+                            $rootScope.showSpinner = false;
                             popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
+                            $rootScope.$apply();
                         } else {
                             for(var i=0; i< photoData.length;i++) {
                                 var collage = {};
