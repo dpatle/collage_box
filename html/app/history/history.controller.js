@@ -43,8 +43,8 @@
                         if(!photoData || photoData.length===0) {
                             popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
                         } else {
-                            var collage = {};
                             for(var i=0; i< photoData.length;i++) {
+                                var collage = {};
                                 collage.url = photoData[i].images[0].source;
                                 collage.imageStyle = {
                                     "background-image" : 'url('+collage.url+')'
