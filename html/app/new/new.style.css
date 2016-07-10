@@ -316,6 +316,7 @@
     margin-top: -225px;
 
     border: 3px solid;
+    border-radius: 10px;
 
 
 }
@@ -332,6 +333,7 @@
     bottom: 3px;
     right: 3px;
     overflow: hidden;
+    border-radius: 10px;
 }
 
 #collage-share-container {

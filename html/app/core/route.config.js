@@ -50,6 +50,18 @@
                         }
                     }
                 }
+            },
+            {
+                url: '/History',
+                config: {
+                    templateUrl: 'app/history/history.view.html',
+                    controller: 'historyCtrl',
+                    resolve: {
+                        isLoggedIn: function (facebookAuth) {
+                            return facebookAuth.isLoggedIn();
+                        }
+                    }
+                }
             }
         ];
     }

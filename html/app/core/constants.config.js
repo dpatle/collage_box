@@ -17,13 +17,13 @@
                 },
                 1003 : {
                     name : "facebook_upload_error",
-                    message : "We are facing problems to upload your collage to Facebook, Please try again ..!"
+                    message : "We are facing problems uploading your collage to Facebook, Please try again ..!"
                 }
             },
             colorCodes : ["#EDFED2","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#E5E5E5","#FFFFFF"],
             hostName : "http://" + window.location.host + "/",
             apiEndPoint : "http://" + window.location.host + ":8080/",
-            facebookAlbumName : "Test Album",
+            facebookAlbumName : "Collage Box",
             windowWidth : $(window).width(),
             windowHeight : $(window).height()
         })

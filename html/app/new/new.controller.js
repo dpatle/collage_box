@@ -493,16 +493,20 @@
               if(isAlbumAvailable) {
                   facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
                       $rootScope.showSpinner = false;
+                      $rootScope.$apply();
                   }, function (err) {
                       popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
+                      $scope.$apply();
                   });
               } else {
                   facebookGraph.createNewAlbum(appConfig.facebookAlbumName).then(function(data){
                       albumId = data.id;
                       facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
                           $rootScope.showSpinner = false;
+                          $rootScope.$apply();
                       }, function (err) {
                           popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
+                          $scope.$apply();
                       });
                   },function(err){
 

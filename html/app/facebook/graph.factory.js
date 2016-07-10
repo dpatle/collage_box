@@ -76,6 +76,10 @@
                     params.source = photoBlobUrl;
                 }
                 return sendGenericGraphPostRequest(uploadPhotoUrl,params);
+            },
+            getAlbumPhotos : function(albumId) {
+                var getAlbumPhotoURL = albumId + '?fields=photos.limit(100){images}';
+                return sendGenericGraphGetRequest(getAlbumPhotoURL);
             }
         };
         return graphAPIs;

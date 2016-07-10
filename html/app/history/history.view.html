@@ -1,0 +1,11 @@
+<div class="view-page-wrapper" ng-controller="historyCtrl">
+    <div id="history-title">
+        <span>Your Recent Collages</span>
+    </div>
+    <div id="history-bottom-wrapper">
+        <div class="recent-photos" ng-repeat="collage in collages">
+            <img ng-src="collage.url"/>
+        </div>
+    </div>
+
+</div>
