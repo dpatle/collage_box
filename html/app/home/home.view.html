@@ -3,7 +3,7 @@
         <span>Let your creativity blossom with amazing photos!</span>
     </div>
     <div id="home-bottom-wrapper">
-        <div id="home-light-background"></div>
+        <div class="home-background-photos" ng-repeat="photo in backgroundPictures" ng-style="photo.urlStyle"></div>
         <div id="profile-tile">
             <div id="block1" class="tile-block" ng-style="tileBackground"></div>
             <div id="block2" class="tile-block" ng-style="tileBackground"></div>
@@ -14,6 +14,9 @@
             <div id="block7" class="tile-block" ng-style="tileBackground"></div>
             <div id="block8" class="tile-block" ng-style="tileBackground"></div>
             <div id="block9" class="tile-block" ng-style="tileBackground"></div>
+        </div>
+        <div id="home-message">
+            <h1>Collect, <br>     Customize,  <br>          And share...!</h1>
         </div>
         <div id="home-button-container">
             <a href="#/New">
