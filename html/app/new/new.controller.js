@@ -16,6 +16,24 @@
         $scope.slidePosition = {
             'left' : (0 - ( $scope.currentSlideView - 1 ) * 100) +"%"
         };
+        var uploadSpeed = -1;
+
+        var calculateUserUploadSpeed = function() {
+            var deferObj = new Promise(function(resolve,reject){
+                imageBank.convertImgToDataURLviaCanvas(appConfig.testImage,function(data){
+                    var testId = "testImage"+new Date().getTime(),
+                        startTime = performance.now(),
+                        endTime,
+                        speed;
+                    imageBank.storeBlobToDisk(data,testId).then(function(actualURL){
+                        endTime = performance.now();
+                        speed = appConfig.testImageSize / ((endTime - startTime)/1000);
+                        resolve(speed);
+                    },function(){});
+                },null);
+            });
+            return deferObj;
+        }
 
         var showAPIError = function() {
             popUpFactory.showPopUp({
@@ -480,20 +498,21 @@
         }
 
         function createFinalCollageToShare() {
-            $rootScope.showSpinner = true;
-            var deferArray = [];
-            for(var i=0;i<$scope.gridPrototypes.length;i++){
-                if($scope.gridPrototypes[i].isSelected) {
-                    for(var j=0;j<$scope.gridPrototypes[i].tiles.length;j++) {
-                        var currentImage= $scope.gridPrototypes[i].tiles[j].photoURL;
-                        var splitArray = currentImage.split("?")[0].split('/');
-                        var imageId = "content/images/photo_library/"+splitArray[splitArray.length-1];
-                        deferArray.push(imageBank.getHostedURLForImage(currentImage,imageId));
+
+            var finalCollageCallback = function() {
+                $rootScope.showSpinner = true;
+                var deferArray = [];
+                for(var i=0;i<$scope.gridPrototypes.length;i++){
+                    if($scope.gridPrototypes[i].isSelected) {
+                        for(var j=0;j<$scope.gridPrototypes[i].tiles.length;j++) {
+                            var currentImage= $scope.gridPrototypes[i].tiles[j].photoURL;
+                            var splitArray = currentImage.split("?")[0].split('/');
+                            var imageId = "content/images/photo_library/"+splitArray[splitArray.length-1];
+                            deferArray.push(imageBank.getHostedURLForImage(currentImage,imageId));
+                        }
                     }
                 }
-            }
-
-            $q.all(deferArray).then(function(newImageArray){
+                $q.all(deferArray).then(function(newImageArray){
                     for(var i=0;i<$scope.gridPrototypes.length;i++){
                         if($scope.gridPrototypes[i].isSelected) {
                             var imageElements = $(".tile-picture img");
@@ -504,67 +523,102 @@
                             }
                         }
                     }
+                    $q.all(getPromisesToLoadHostedImages(newImageArray)).then(function(){
+                        var collageElement = document.getElementById("collage");
+                        imageBank.getCanvasForCollage(collageElement).then(function(canvas){
+                            var shareContainer = document.getElementById('collage-share-container');
+                            shareContainer.appendChild(canvas);
+                            var blobURL = canvas.toDataURL();
+                            var blobId =  "content/images/photo_library/collage_image_" + new Date().getTime()+".jpeg";
+                            imageBank.storeBlobToDisk(blobURL,blobId).then(function(actualURL){
+                                $scope.collageURLToShare = appConfig.hostName+actualURL;
+                                $rootScope.$apply(function(){
+                                    $scope.currentSlideView = 3;
+                                    $rootScope.showSpinner = false;
+                                });
 
-                $q.all(getPromisesToLoadHostedImages(newImageArray)).then(function(){
-                    var collageElement = document.getElementById("collage");
-                    imageBank.getCanvasForCollage(collageElement).then(function(canvas){
-                        var shareContainer = document.getElementById('collage-share-container');
-                        shareContainer.appendChild(canvas);
-                        var blobURL = canvas.toDataURL();
-                        var blobId =  "content/images/photo_library/collage_image_" + new Date().getTime()+".jpeg";
-                        imageBank.storeBlobToDisk(blobURL,blobId).then(function(actualURL){
-                            $scope.collageURLToShare = appConfig.hostName+actualURL;
-                            $rootScope.$apply(function(){
-                                $scope.currentSlideView = 3;
-                                $rootScope.showSpinner = false;
-                            });
-
+                            },showAPIError);
                         },showAPIError);
                     },showAPIError);
                 },showAPIError);
-            },showAPIError);
+            };
+            popUpFactory.showPopUp({
+                heading : appConfig.errorMessage["1010"].name,
+                message : appConfig.errorMessage["1010"].message,
+                callback1 : finalCollageCallback,
+                callback2 : function() {},
+                buttonText1 : "Okay",
+                buttonText2 : "Cancel",
+                showButton1 : true,
+                showButton2 : true
+            });
+            $rootScope.$apply();
         }
 
         $scope.postCollageOnFacebook = function() {
-            $rootScope.showSpinner = true;
-          facebookGraph.getAlbumNames().then(function(response){
-              var isAlbumAvailable = false;
-              for(var i=0;i<response.data.length;i++) {
-                  if(response.data[i].name===appConfig.facebookAlbumName) {
-                      albumId = response.data[i].id;
-                      isAlbumAvailable = true;
-                      break;
-                  }
-              }
 
-              if(isAlbumAvailable) {
-                  facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
-                      $rootScope.showSpinner = false;
-                      $rootScope.$apply();
-                  }, handleFacebookUploadError);
-              } else {
-                  facebookGraph.createNewAlbum(appConfig.facebookAlbumName).then(function(data){
-                      albumId = data.id;
+          var postCallback = function() {
+              $rootScope.showSpinner = true;
+              facebookGraph.getAlbumNames().then(function(response){
+                  var isAlbumAvailable = false;
+                  for(var i=0;i<response.data.length;i++) {
+                      if(response.data[i].name===appConfig.facebookAlbumName) {
+                          albumId = response.data[i].id;
+                          isAlbumAvailable = true;
+                          break;
+                      }
+                  }
+                  if(isAlbumAvailable) {
                       facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
                           $rootScope.showSpinner = false;
                           $rootScope.$apply();
-                      }, function (err) {
-                          popUpFactory.showPopUp({
-                              heading : appConfig.errorMessage["1003"].name,
-                              message : appConfig.errorMessage["1003"].message,
-                              callback1 : function() {},
-                              callback2 : function() {},
-                              buttonText1 : "Okay",
-                              buttonText2 : "",
-                              showButton1 : true,
-                              showButton2 : false
+                      }, handleFacebookUploadError);
+                  } else {
+                      facebookGraph.createNewAlbum(appConfig.facebookAlbumName).then(function(data){
+                          albumId = data.id;
+                          facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
+                              popUpFactory.showPopUp({
+                                  heading : appConfig.errorMessage["1011"].name,
+                                  message : appConfig.errorMessage["1011"].message,
+                                  callback1 : function() {
+                                      window.location.href = "#/History";
+                                  },
+                                  callback2 : function() {},
+                                  buttonText1 : "Okay",
+                                  buttonText2 : "",
+                                  showButton1 : true,
+                                  showButton2 : false
+                              });
+                              $rootScope.$apply();
+                          }, function (err) {
+                              popUpFactory.showPopUp({
+                                  heading : appConfig.errorMessage["1003"].name,
+                                  message : appConfig.errorMessage["1003"].message,
+                                  callback1 : function() {},
+                                  callback2 : function() {},
+                                  buttonText1 : "Okay",
+                                  buttonText2 : "",
+                                  showButton1 : true,
+                                  showButton2 : false
+                              });
+                              $rootScope.$apply();
                           });
-                          $rootScope.$apply();
-                      });
-                  },handleFacebookUploadError);
-              }
+                      },handleFacebookUploadError);
+                  }
+              },handleFacebookUploadError);
+          };
+            popUpFactory.showPopUp({
+                heading : appConfig.errorMessage["1012"].name,
+                message : appConfig.errorMessage["1012"].message,
+                callback1 : postCallback,
+                callback2 : function() {},
+                buttonText1 : "Okay",
+                buttonText2 : "Cancel",
+                showButton1 : true,
+                showButton2 : true
+            });
+            $rootScope.$apply();
 
-          },handleFacebookUploadError);
         };
 
         //Third slide ends here
@@ -574,6 +628,10 @@
             fetchUserInfo();
             $scope.appendSelectivePhotos();
             createColorCubes();
+            calculateUserUploadSpeed().then(function(speed){
+                uploadSpeed = speed;
+            },function(){
+            });
         }
 
         init();

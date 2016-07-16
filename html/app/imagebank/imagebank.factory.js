@@ -52,7 +52,6 @@
                 });
                 return promise;
             };
-
         imageBankAPI.convertImgToDataURLviaCanvas = function(url, callback, outputFormat){
             var img = new Image();
             img.crossOrigin = 'Anonymous';

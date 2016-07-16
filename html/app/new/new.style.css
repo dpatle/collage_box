@@ -106,11 +106,9 @@
     transition: all 0.2s linear;
 }
 
-
 .photo-tile.selected .tile-background {
-    transform: scale(0.85,0.85);
+    transform: scale(0.85, 0.85);
 }
-
 
 .selection-check {
     font-family: ubuntu-icon;
@@ -126,7 +124,6 @@
     left: 7px;
     opacity: 0;
 }
-
 
 .photo-tile:hover .selection-check {
     opacity: 1;
@@ -174,8 +171,9 @@
     top: 35px;
     overflow: hidden;
 }
+
 .grid-prototype {
-    background-image:url(../../content/images/grid-proto.png);
+    background-image: url(../../content/images/grid-proto.png);
     width: 57px;
     height: 57px;
     background-size: 240px;
@@ -240,11 +238,11 @@
     -o-transition: transform 0.2s linear;
     transition: transform 0.2s linear;
     position: absolute;
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.color-palate.selected,  .color-palate:hover {
-    transform:scale(0.8);
+.color-palate.selected, .color-palate:hover {
+    transform: scale(0.8);
 }
 
 #collage-photo-picker {
@@ -295,30 +293,21 @@
     bottom: 20px;
 
     border: 1px solid #D8D8D8;
-
-    border-radius: 5px;
+    display: block;
 }
 
 #collage {
-
-    position: absolute;
-
-    width: 680px;
-
-    height: 450px;
-
-    left: 50%;
-
-    top: 50%;
-
-    margin-left: -340px;
-
-    margin-top: -225px;
-
+    min-width: 680px;
+    min-height: 450px;
+    max-width: 850px;
+    max-height: 550px;
+    width: 96%;
+    height: 96%;
     border: 3px solid;
-    border-radius: 10px;
-
-
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .inner-tile {
@@ -328,12 +317,11 @@
 .tile-picture {
     background-color: #FFC364;
     position: absolute;
-    top:3px;
+    top: 3px;
     left: 3px;
     bottom: 3px;
     right: 3px;
     overflow: hidden;
-    border-radius: 10px;
 }
 
 #collage-share-container {

@@ -38,6 +38,22 @@
                 1008 : {
                     name : "Error reaching server",
                     message : "We are facing dificulties to communicate with server!"
+                },
+                1009 : {
+                    name : "No data found",
+                    message : "We could not found your recent creations!"
+                },
+                1010 : {
+                    name : "Creating you collage",
+                    message : "This process will take few seconds, Please be patience!"
+                },
+                1011 : {
+                    name : "Done",
+                    message : "Your collage has been posted to Facebook!"
+                },
+                1012 : {
+                    name : "Sharing on Facebook",
+                    message : "This collage will be posted on Facebook on behalf of you!"
                 }
             },
             colorCodes : ["#ee0b41","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#ff9c00","#FFFFFF"],
@@ -45,6 +61,8 @@
             apiEndPoint : "http://" + window.location.host + ":8080/",
             facebookAlbumName : "Collage Box",
             windowWidth : $(window).width(),
-            windowHeight : $(window).height()
+            windowHeight : $(window).height(),
+            testImage : 'content/images/upload-test-image.jpg',
+            testImageSize : 110
         })
 })();

@@ -54,8 +54,8 @@
                             $scope.noDataFound = true;
                             $rootScope.showSpinner = false;
                             popUpFactory.showPopUp({
-                                heading : appConfig.errorMessage["1003"].name,
-                                message : appConfig.errorMessage["1003"].message,
+                                heading : appConfig.errorMessage["1009"].name,
+                                message : appConfig.errorMessage["1009"].message,
                                 callback1 : function() {},
                                 callback2 : function() {},
                                 buttonText1 : "Okay",
@@ -78,8 +78,8 @@
                         }
                     }, function (err) {
                         popUpFactory.showPopUp({
-                            heading : appConfig.errorMessage["1003"].name,
-                            message : appConfig.errorMessage["1003"].message,
+                            heading : appConfig.errorMessage["1009"].name,
+                            message : appConfig.errorMessage["1009"].message,
                             callback1 : function() {},
                             callback2 : function() {},
                             buttonText1 : "Okay",
@@ -96,8 +96,8 @@
                 }
             },function(err){
                 popUpFactory.showPopUp({
-                    heading : appConfig.errorMessage["1007"].name,
-                    message : appConfig.errorMessage["1007"].message,
+                    heading : appConfig.errorMessage["1009"].name,
+                    message : appConfig.errorMessage["1009"].message,
                     callback1 : function() {},
                     callback2 : function() {},
                     buttonText1 : "Okay",
