@@ -293,8 +293,7 @@
     bottom: 20px;
 
     border: 1px solid #D8D8D8;
-    display: block;
-}
+    display: block;overflow: hidden;text-align: center;}
 
 #collage {
     min-width: 680px;

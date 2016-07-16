@@ -453,3 +453,13 @@ svg {
     cursor: pointer;
     text-align: center;
 }
+
+#progress-bar {
+    position: fixed;
+    height: 5px;
+    top: 0px;
+    left: 0px;
+    background-color: #ee0b41;
+    transition: all 3s linear;
+    -webkit-transition: all 0.5s linear;
+}

@@ -6,9 +6,9 @@
     angular.module('app')
         .controller('newCtrl',newCtrlFunction);
 
-    newCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory','imageBank','$timeout','$q'];
+    newCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory','imageBank','$timeout','$q','$interval'];
 
-    function newCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory,imageBank,$timeout,$q){
+    function newCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory,imageBank,$timeout,$q,$interval){
         $rootScope.showSpinner = false;
         $scope.selectivePhotos = [];
         $scope.nextPhotosPage = null;
@@ -16,24 +16,11 @@
         $scope.slidePosition = {
             'left' : (0 - ( $scope.currentSlideView - 1 ) * 100) +"%"
         };
-        var uploadSpeed = -1;
-
-        var calculateUserUploadSpeed = function() {
-            var deferObj = new Promise(function(resolve,reject){
-                imageBank.convertImgToDataURLviaCanvas(appConfig.testImage,function(data){
-                    var testId = "testImage"+new Date().getTime(),
-                        startTime = performance.now(),
-                        endTime,
-                        speed;
-                    imageBank.storeBlobToDisk(data,testId).then(function(actualURL){
-                        endTime = performance.now();
-                        speed = appConfig.testImageSize / ((endTime - startTime)/1000);
-                        resolve(speed);
-                    },function(){});
-                },null);
-            });
-            return deferObj;
-        }
+        $rootScope.progressStyle = {
+            'width' : '0%'
+        };
+        var progressTimer = 0,
+            progressInterval;
 
         var showAPIError = function() {
             popUpFactory.showPopUp({
@@ -497,10 +484,25 @@
             return hostedImagePromises;
         }
 
-        function createFinalCollageToShare() {
 
+        function startProgressBar(timeout) {
+            progressTimer = 0;
+            progressInterval = $interval(function(){
+                if(progressTimer > timeout) {
+                    progressTimer = timeout;
+                    $interval.cancel(progressInterval);
+                }
+                $rootScope.progressStyle = {
+                    'width' : ((progressTimer / timeout) * 100) + "%"
+                };
+                progressTimer+=1000;
+            },1000);
+        }
+
+        function createFinalCollageToShare() {
             var finalCollageCallback = function() {
                 $rootScope.showSpinner = true;
+                startProgressBar(1600);
                 var deferArray = [];
                 for(var i=0;i<$scope.gridPrototypes.length;i++){
                     if($scope.gridPrototypes[i].isSelected) {
@@ -570,7 +572,18 @@
                   }
                   if(isAlbumAvailable) {
                       facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
-                          $rootScope.showSpinner = false;
+                          popUpFactory.showPopUp({
+                              heading : appConfig.errorMessage["1011"].name,
+                              message : appConfig.errorMessage["1011"].message,
+                              callback1 : function() {
+                                  window.location.href = "#/History";
+                              },
+                              callback2 : function() {},
+                              buttonText1 : "Okay",
+                              buttonText2 : "",
+                              showButton1 : true,
+                              showButton2 : false
+                          });
                           $rootScope.$apply();
                       }, handleFacebookUploadError);
                   } else {
@@ -612,7 +625,7 @@
                 message : appConfig.errorMessage["1012"].message,
                 callback1 : postCallback,
                 callback2 : function() {},
-                buttonText1 : "Okay",
+                buttonText1 : "Post",
                 buttonText2 : "Cancel",
                 showButton1 : true,
                 showButton2 : true
@@ -628,10 +641,6 @@
             fetchUserInfo();
             $scope.appendSelectivePhotos();
             createColorCubes();
-            calculateUserUploadSpeed().then(function(speed){
-                uploadSpeed = speed;
-            },function(){
-            });
         }
 
         init();

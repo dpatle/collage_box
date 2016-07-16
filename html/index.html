@@ -73,7 +73,9 @@
     <background></background>
     <div ng-view></div>
     <navigator></navigator>
-    <div id="application-spinner" ng-show="$root.showSpinner"></div>
+    <div id="application-spinner" ng-show="$root.showSpinner">
+        <div id="progress-bar" ng-syle="$root.progressStyle"></div>
+    </div>
     <dialogue-box></dialogue-box>
 </div>
 <div id="fb-root"></div>
