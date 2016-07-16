@@ -1,0 +1,15 @@
+<div id="popup" ng-show="$root.popup.showDialogue"  ng-click="$root.popup.closeWith2()">
+    <div id="popup-dialogue">
+        <div id="close-button" ng-click="$root.popup.closeWith2()">X</div>
+        <div id="popup-heading">
+            <h2>{{$root.popup.heading}}</h2>
+        </div>
+        <div id="popup-message">
+            <span>{{$root.popup.message}}</span>
+        </div>
+        <div id="popup-button-container">
+            <div class="popup-button" ng-click="$root.popup.closeWith1()" ng-show="$root.popup.showButton1">{{$root.popup.buttonText1}}</div>
+            <div class="popup-button" ng-click="$root.popup.closeWith2()"  ng-show="$root.popup.showButton2">{{$root.popup.buttonText2}}</div>
+        </div>
+    </div>
+</div>

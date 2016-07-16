@@ -6,9 +6,9 @@
     angular.module('app')
         .controller('homeCtrl',homeCtrlFunction);
 
-    homeCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig'];
+    homeCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory'];
 
-    function homeCtrlFunction($scope,facebookGraph,$rootScope,appConfig){
+    function homeCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory){
         var homeCtrlScope = $scope;
         $scope.backgroundPictures = [];
 
@@ -21,7 +21,17 @@
                 };
                 $rootScope.$apply();
             },function(response){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1005"].name,
+                    message : appConfig.errorMessage["1005"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 
@@ -33,7 +43,17 @@
                 };
                 homeCtrlScope.$apply();
             },function(response){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1005"].name,
+                    message : appConfig.errorMessage["1005"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 
@@ -78,7 +98,17 @@
                 $rootScope.showSpinner = false;
                 $scope.$apply();
             },function(){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1005"].name,
+                    message : appConfig.errorMessage["1005"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         }
         var init = function() {

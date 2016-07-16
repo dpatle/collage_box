@@ -8,16 +8,36 @@
         .constant("appConfig", {
             errorMessage : {
                 1001 : {
-                    name : "facebook_login_error",
+                    name : "Facebook communication error",
                     message : "We are facing problems to get you in using Facebook, Please try again ..!"
                 },
                 1002 : {
-                    name : "photo_selection_error",
+                    name : "Photo selection error",
                     message : "Please select at least 5 photos, and try again ..!"
                 },
                 1003 : {
-                    name : "facebook_upload_error",
-                    message : "We are facing problems uploading your collage to Facebook, Please try again ..!"
+                    name : "Facebook communication error",
+                    message : "We are facing problems to upload your collage to Facebook, Please try again ..!"
+                },
+                1004 : {
+                    name : "Logout ?",
+                    message : "Logging out will also log you out from Facebook !"
+                },
+                1005 : {
+                    name : "Facebook communication error",
+                    message : "We are facing dificulties in fetching your information from Facebook!"
+                },
+                1006 : {
+                    name : "Facebook communication error",
+                    message : "We are facing dificulties in taking you out from Facebook, Please try again!"
+                },
+                1007 : {
+                    name : "Facebook communication error",
+                    message : "We are facing dificulties in fetching photos from Facebook!"
+                },
+                1008 : {
+                    name : "Error reaching server",
+                    message : "We are facing dificulties to communicate with server!"
                 }
             },
             colorCodes : ["#ee0b41","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#ff9c00","#FFFFFF"],

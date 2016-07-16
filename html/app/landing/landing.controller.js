@@ -25,7 +25,17 @@
                         landingScope.changeView("Home");
                     }
                     else{
-                        popUpFactory.showPopUp(appConfig.errorMessage["1001"].message);
+                        popUpFactory.showPopUp({
+                            heading : appConfig.errorMessage["1001"].name,
+                            message : appConfig.errorMessage["1001"].message,
+                            callback1 : function() {},
+                            callback2 : function() {},
+                            buttonText1 : "Okay",
+                            buttonText2 : "",
+                            showButton1 : true,
+                            showButton2 : false
+                        });
+                        $rootScope.$apply();
                     }
                     $scope.$apply();
                 });

@@ -17,6 +17,34 @@
             'left' : (0 - ( $scope.currentSlideView - 1 ) * 100) +"%"
         };
 
+        var showAPIError = function() {
+            popUpFactory.showPopUp({
+                heading : appConfig.errorMessage["1008"].name,
+                message : appConfig.errorMessage["1008"].message,
+                callback1 : function() {},
+                callback2 : function() {},
+                buttonText1 : "Okay",
+                buttonText2 : "",
+                showButton1 : true,
+                showButton2 : false
+            });
+            $rootScope.$apply();
+        };
+
+        var handleFacebookUploadError = function() {
+            popUpFactory.showPopUp({
+                heading : appConfig.errorMessage["1003"].name,
+                message : appConfig.errorMessage["1003"].message,
+                callback1 : function() {},
+                callback2 : function() {},
+                buttonText1 : "Okay",
+                buttonText2 : "",
+                showButton1 : true,
+                showButton2 : false
+            });
+            $rootScope.$apply();
+        };
+
         //First slide code here
 
         var fetchedPhotos = [];
@@ -42,8 +70,17 @@
                 }
 
                 if(!canMoveToOtherView){
-                    popUpFactory.showPopUp(appConfig.errorMessage["1002"].message);
-                    return;
+                    popUpFactory.showPopUp({
+                        heading : appConfig.errorMessage["1002"].name,
+                        message : appConfig.errorMessage["1002"].message,
+                        callback1 : function() {},
+                        callback2 : function() {},
+                        buttonText1 : "Okay",
+                        buttonText2 : "",
+                        showButton1 : true,
+                        showButton2 : false
+                    });
+                    $rootScope.$apply();
                 } else {
                     $scope.currentSlideView = toView;
                 }
@@ -67,7 +104,17 @@
                 };
                 $rootScope.$apply();
             },function(response){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1005"].name,
+                    message : appConfig.errorMessage["1005"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 
@@ -89,7 +136,7 @@
 
                     var imageData = responseData[i].images;
                     for(var j=imageData.length-1;j>=0;j--){
-                        if((imageData[j].width > 300 && imageData[j].height > 300) || j===imageData.length-1){
+                        if((imageData[j].width > 300 && imageData[j].height > 300) || j===0){
                             tileData.url = imageData[j].source;
                             break;
                         }
@@ -103,7 +150,17 @@
                 }
                 $scope.nextPhotosPage = response.paging.next ? response.paging.cursors.after : null;
             },function(response){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1007"].name,
+                    message : appConfig.errorMessage["1007"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 
@@ -462,20 +519,10 @@
                                 $rootScope.showSpinner = false;
                             });
 
-                        }, function (err) {
-
-                        });
-                    }, function(err){
-
-                    });
-                },function(err){
-
-                });
-            },function(err){
-
-            });
-
-
+                        },showAPIError);
+                    },showAPIError);
+                },showAPIError);
+            },showAPIError);
         }
 
         $scope.postCollageOnFacebook = function() {
@@ -494,10 +541,7 @@
                   facebookGraph.uploadPhotoToAlbum(albumId, $scope.collageURLToShare, null).then(function (data) {
                       $rootScope.showSpinner = false;
                       $rootScope.$apply();
-                  }, function (err) {
-                      popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
-                      $scope.$apply();
-                  });
+                  }, handleFacebookUploadError);
               } else {
                   facebookGraph.createNewAlbum(appConfig.facebookAlbumName).then(function(data){
                       albumId = data.id;
@@ -505,17 +549,22 @@
                           $rootScope.showSpinner = false;
                           $rootScope.$apply();
                       }, function (err) {
-                          popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
-                          $scope.$apply();
+                          popUpFactory.showPopUp({
+                              heading : appConfig.errorMessage["1003"].name,
+                              message : appConfig.errorMessage["1003"].message,
+                              callback1 : function() {},
+                              callback2 : function() {},
+                              buttonText1 : "Okay",
+                              buttonText2 : "",
+                              showButton1 : true,
+                              showButton2 : false
+                          });
+                          $rootScope.$apply();
                       });
-                  },function(err){
-
-                  });
+                  },handleFacebookUploadError);
               }
 
-          },function(err){
-
-          });
+          },handleFacebookUploadError);
         };
 
         //Third slide ends here

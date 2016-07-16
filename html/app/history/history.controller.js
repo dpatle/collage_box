@@ -20,7 +20,17 @@
                 };
                 $rootScope.$apply();
             },function(response){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1005"].name,
+                    message : appConfig.errorMessage["1005"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 
@@ -43,7 +53,16 @@
                         if(!photoData || photoData.length===0) {
                             $scope.noDataFound = true;
                             $rootScope.showSpinner = false;
-                            popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
+                            popUpFactory.showPopUp({
+                                heading : appConfig.errorMessage["1003"].name,
+                                message : appConfig.errorMessage["1003"].message,
+                                callback1 : function() {},
+                                callback2 : function() {},
+                                buttonText1 : "Okay",
+                                buttonText2 : "",
+                                showButton1 : true,
+                                showButton2 : false
+                            });
                             $rootScope.$apply();
                         } else {
                             for(var i=0; i< photoData.length;i++) {
@@ -58,7 +77,17 @@
                             $rootScope.$apply();
                         }
                     }, function (err) {
-                        popUpFactory.showPopup(appConfig.errorMessage["1003"].message);
+                        popUpFactory.showPopUp({
+                            heading : appConfig.errorMessage["1003"].name,
+                            message : appConfig.errorMessage["1003"].message,
+                            callback1 : function() {},
+                            callback2 : function() {},
+                            buttonText1 : "Okay",
+                            buttonText2 : "",
+                            showButton1 : true,
+                            showButton2 : false
+                        });
+                        $rootScope.$apply();
                     });
                 } else {
                     $scope.noDataFound = true;
@@ -66,7 +95,17 @@
                     $rootScope.$apply();
                 }
             },function(err){
-
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1007"].name,
+                    message : appConfig.errorMessage["1007"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+                $rootScope.$apply();
             });
         };
 

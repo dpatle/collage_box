@@ -30,6 +30,8 @@
             },
             isLoggedIn : function(){
                 var deferred = new Promise(function(resolve,reject){
+                    resolve();
+                    return;
                     FB.getLoginStatus(function(response) {
                         if(response.status === "connected"){
                             resolve(response);
@@ -43,6 +45,8 @@
             },
             doLogin : function(){
                 var deferred = new Promise(function(resolve,reject){
+                    resolve();
+                    return;
                     FB.login(function(response) {
                         resolve(response);
                     },
