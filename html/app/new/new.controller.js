@@ -33,7 +33,6 @@
                 showButton1 : true,
                 showButton2 : false
             });
-            $rootScope.$apply();
         };
 
         var handleFacebookUploadError = function() {
@@ -47,7 +46,6 @@
                 showButton1 : true,
                 showButton2 : false
             });
-            $rootScope.$apply();
         };
 
         //First slide code here
@@ -85,7 +83,6 @@
                         showButton1 : true,
                         showButton2 : false
                     });
-                    $rootScope.$apply();
                 } else {
                     $scope.currentSlideView = toView;
                 }
@@ -119,7 +116,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 
@@ -165,7 +161,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 
@@ -554,7 +549,6 @@
                 showButton1 : true,
                 showButton2 : true
             });
-            $rootScope.$apply();
         }
 
         $scope.postCollageOnFacebook = function() {
@@ -584,7 +578,6 @@
                               showButton1 : true,
                               showButton2 : false
                           });
-                          $rootScope.$apply();
                       }, handleFacebookUploadError);
                   } else {
                       facebookGraph.createNewAlbum(appConfig.facebookAlbumName).then(function(data){
@@ -602,7 +595,6 @@
                                   showButton1 : true,
                                   showButton2 : false
                               });
-                              $rootScope.$apply();
                           }, function (err) {
                               popUpFactory.showPopUp({
                                   heading : appConfig.errorMessage["1003"].name,
@@ -614,7 +606,6 @@
                                   showButton1 : true,
                                   showButton2 : false
                               });
-                              $rootScope.$apply();
                           });
                       },handleFacebookUploadError);
                   }
@@ -630,7 +621,6 @@
                 showButton1 : true,
                 showButton2 : true
             });
-            $rootScope.$apply();
 
         };
 

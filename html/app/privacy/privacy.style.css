@@ -1,0 +1,52 @@
+#privacy-bottom-wrapper{
+
+    position: absolute;
+
+    top: 150px;
+
+    bottom: 0px;
+
+    width: 100%;
+
+    overflow: auto;
+
+    text-align: center;
+
+    padding: 0px;
+
+    margin: 0px;
+
+    white-space: pre-line;
+}
+
+#privacy-bottom-wrapper p {
+
+    letter-spacing: 0.1em;
+
+    font-family: ubuntu-light;
+
+    font-size: 15px;
+
+    text-overflow: ellipsis;
+
+    margin-top: 0px;
+}
+
+#privacy-bottom-wrapper h2 {
+
+    letter-spacing: 0.2em;
+
+    font-family: ubuntu-light;
+
+    font-size: 18px;
+
+    text-overflow: ellipsis;
+
+    margin-bottom: 0px;
+}
+#privacy-bottom-wrapper h1 {
+    letter-spacing: 0.2em;
+    font-family: ubuntu-light;
+    font-size: 22px;
+    text-overflow: ellipsis;
+}

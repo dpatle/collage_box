@@ -31,7 +31,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 
@@ -53,7 +52,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 
@@ -108,7 +106,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         }
         var init = function() {

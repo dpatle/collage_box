@@ -62,6 +62,25 @@
                         }
                     }
                 }
+            },
+            {
+                url: '/About',
+                config: {
+                    templateUrl: 'app/about/about.view.html',
+                    controller: 'aboutCtrl',
+                    resolve: {
+                        isLoggedIn: function (facebookAuth) {
+                            return facebookAuth.isLoggedIn();
+                        }
+                    }
+                }
+            },
+            {
+                url: '/Privacy',
+                config: {
+                    templateUrl: 'app/privacy/privacy.view.html',
+                    controller: 'privacyCtrl'
+                }
             }
         ];
     }

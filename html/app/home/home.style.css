@@ -74,6 +74,9 @@
     background-size: 295px;
     background-repeat: no-repeat;
     opacity: 0;
+    -webkit-animation-name: fade-in-animation;
+    -webkit-animation-duration: 1.5s;
+    -webkit-animation-fill-mode: forwards;
     animation-name: fade-in-animation;
     animation-duration: 1.5s;
     animation-fill-mode: forwards;
@@ -85,12 +88,14 @@
     left: 2px;
     top:2px;
     background-position: 0% 0%;
+    -webkit-animation-delay: 1.4s;
     animation-delay: 1.4s;
 }
 #block2 {
     left: 102px;
     top:2px;
     background-position: center 0%;
+    -webkit-animation-delay: 1.6s;
     animation-delay: 1.6s;
 }
 #block3 {
@@ -98,24 +103,28 @@
     top: 2px;
     background-position: 100% 0%;
     border-radius: 0px 40px 0px 0px;
+    -webkit-animation-delay: 1.8s;
     animation-delay: 1.8s;
 }
 #block4 {
     left: 2px;
     top:102px;
     background-position: 0% center;
+    -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
 }
 #block5 {
     left: 102px;
     top:102px;
     background-position: center;
+    -webkit-animation-delay: 1.4s;
     animation-delay: 1.4s;
 }
 #block6 {
     left: 202px;
     top:102px;
     background-position: 100% center;
+    -webkit-animation-delay: 1.6s;
     animation-delay: 1.6s;
 }
 #block7 {
@@ -123,12 +132,14 @@
     top:202px;
     background-position: 0% 100%;
     border-radius: 0px 0px 0px 40px;
+    -webkit-animation-delay: 1s;
     animation-delay: 1s;
 }
 #block8 {
     left: 102px;
     top:202px;
     background-position: center 100%;
+    -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
 }
 #block9 {
@@ -195,6 +206,14 @@
 
     opacity: 0;
 
+    -webkit-animation-name: fade-in-animation;
+
+    -webkit-animation-duration: 1.5s;
+
+    -webkit-animation-fill-mode: forwards;
+
+    -webkit-animation-delay: 2s;
+
     animation-name: fade-in-animation;
 
     animation-duration: 1.5s;
@@ -214,6 +233,10 @@
     text-align: center;
     margin-top: -22px;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    -webkit-animation-name: crawl-down-animation;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-delay: 1.5s;
+    -webkit-animation-fill-mode: forwards;
     animation-name: crawl-down-animation;
     animation-duration: 1s;
     animation-delay: 1.5s;

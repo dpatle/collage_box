@@ -1,0 +1,40 @@
+#about-title {
+    background-color: #d9d9d9;
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    top: 0px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    z-index: 1;
+}
+
+#about-title span {
+    color: #ee0b41;
+    letter-spacing: 0.2em;
+    font-family: ubuntu-bold;
+    font-size: 22px;
+    line-height: 150px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#about-bottom-wrapper {
+    position: absolute;
+    top: 150px;
+    bottom: 0px;
+    width: 100%;
+    overflow: auto;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    white-space: pre-line;
+}
+
+#about-bottom-wrapper h3 {
+    letter-spacing: 0.2em;
+    font-family: ubuntu-light;
+    font-size: 18px;
+    text-overflow: ellipsis;
+}

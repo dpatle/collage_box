@@ -30,7 +30,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 
@@ -63,7 +62,6 @@
                                 showButton1 : true,
                                 showButton2 : false
                             });
-                            $rootScope.$apply();
                         } else {
                             for(var i=0; i< photoData.length;i++) {
                                 var collage = {};
@@ -87,7 +85,6 @@
                             showButton1 : true,
                             showButton2 : false
                         });
-                        $rootScope.$apply();
                     });
                 } else {
                     $scope.noDataFound = true;
@@ -105,7 +102,6 @@
                     showButton1 : true,
                     showButton2 : false
                 });
-                $rootScope.$apply();
             });
         };
 

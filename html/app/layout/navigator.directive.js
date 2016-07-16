@@ -24,7 +24,6 @@
                                     showButton1 : true,
                                     showButton2 : false
                                 });
-                                $rootScope.$apply();
                             });
                         },
                         callback2 : function() {},

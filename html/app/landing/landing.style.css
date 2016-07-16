@@ -21,9 +21,13 @@
     display: block;
     opacity: 0;
     animation-name: fade-in-animation;
+    -webkit-animation-name : fade-in-animation;
     animation-duration: 3s;
+    -webkit-duration:3s;
     animation-fill-mode: forwards;
+    -webkit-fill-mode: forwards;
     animation-delay: 1s;
+    -webit-delay: 1s;
 }
 
 .logo-element{
@@ -31,9 +35,13 @@
     display: inline-block;
     opacity: 0;
     animation-name: fade-in-animation;
+    -webkit-name: fade-in-animation;
     animation-duration: 3s;
+    -webkit-duration: 3s;
     animation-fill-mode: forwards;
+    -webkit-fill-mode: forwards;
     animation-delay: 1s;
+    -webkit-animation-delay:1s;
 }
 
 .logo-box-outer{
@@ -136,29 +144,37 @@
     animation-name: move-frames;
     animation-duration: 1s;
     animation-fill-mode: forwards;
+    -webkit-animation-name: move-frames;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: forwards;
 }
 
 #landing-frame-1{
     background-image: url(https://unsplash.it/130/150/?random&1);
-    animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    -webkit-animation-delay: 1s;
 }
 
 #landing-frame-2{
     background-image: url(https://unsplash.it/130/150/?random&2);
-    animation-delay: 1.15s;
+    -webkit-animation-delay: 1.15s;
+    -webkit-animation-delay: 1.15s;
 }
 
 #landing-frame-3{
     background-image: url(https://unsplash.it/130/150/?random&3);
-    animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
+    -webkit-animation-delay: 1.3s;
 }
 
 #landing-frame-4{
     background-image: url(https://unsplash.it/130/150/?random&4);
-    animation-delay: 1.45s;
+    -webkit-animation-delay: 1.45s;
+    -webkit-animation-delay: 1.45s;
 }
 
 #landing-frame-5{
     background-image: url(https://unsplash.it/130/150/?random&5);
-    animation-delay: 1.6s;
+    -webkit-animation-delay: 1.6s;
+    -webkit-animation-delay: 1.6s;
 }
