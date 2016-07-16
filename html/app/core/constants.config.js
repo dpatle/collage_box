@@ -44,11 +44,11 @@
                     message : "We could not found your recent creations!"
                 },
                 1010 : {
-                    name : "Creating you collage",
+                    name : "Creating your collage",
                     message : "This process will take few seconds, Please be patience!"
                 },
                 1011 : {
-                    name : "Done",
+                    name : "Done!",
                     message : "Your collage has been posted to Facebook!"
                 },
                 1012 : {
