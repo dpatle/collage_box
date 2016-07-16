@@ -59,7 +59,7 @@
             colorCodes : ["#ee0b41","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#ff9c00","#FFFFFF"],
             hostName : "http://" + window.location.host + "/",
             apiEndPoint : "http://" + window.location.host + ":8080/",
-            facebookAlbumName : "Collage Box",
+            facebookAlbumName : "Classic Collage",
             windowWidth : $(window).width(),
             windowHeight : $(window).height(),
             testImage : 'content/images/upload-test-image.jpg',
