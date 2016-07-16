@@ -502,7 +502,7 @@
         function createFinalCollageToShare() {
             var finalCollageCallback = function() {
                 $rootScope.showSpinner = true;
-                startProgressBar(1600);
+                startProgressBar(16000);
                 var deferArray = [];
                 for(var i=0;i<$scope.gridPrototypes.length;i++){
                     if($scope.gridPrototypes[i].isSelected) {
