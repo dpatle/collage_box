@@ -48,6 +48,29 @@ function respondForStoreBlobImage(req, res, next) {
     });
 }
 
+
+function respondForCleanHostedImages(req,res,next) {
+    var imageArray = req.params["imageArray"].split(',');
+    deleteHostedImages(imageArray,function(){
+        res.send(201,"deleted");
+        next();
+    });
+}
+
+function deleteHostedImages(imageArray,callback) {
+    if(imageArray.length>0) {
+        fs.exists(writePathPrefix+imageArray[0], function(exists) {
+            if(exists) {
+                fs.unlink(writePathPrefix+imageArray[0]);
+            }
+            imageArray.shift();
+            deleteHostedImages(imageArray,callback);
+        });
+    } else {
+        callback();
+    }
+}
+
 function getQueryVariable(query,variable) {
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
@@ -57,8 +80,6 @@ function getQueryVariable(query,variable) {
         }
     }
 }
-
-
 
 var server = restify.createServer();
 server.use(restify.queryParser());
@@ -72,6 +93,7 @@ server.use(
 );
 server.post('/saveBlobImage', respondForStoreBlobImage);
 server.get('/saveFacebookImage', respondForStoreFacebookImage);
+server.del('/cleanHostedImages', respondForCleanHostedImages);
 
 server.listen(8080, function() {
     console.log('%s listening at %s', server.name, server.url);

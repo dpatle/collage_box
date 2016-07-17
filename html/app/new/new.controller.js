@@ -528,6 +528,7 @@
                             var blobURL = canvas.toDataURL();
                             var blobId =  "content/images/photo_library/collage_image_" + new Date().getTime()+".jpeg";
                             imageBank.storeBlobToDisk(blobURL,blobId).then(function(actualURL){
+                                hostedImageArray.push(actualURL);
                                 $scope.collageURLToShare = appConfig.hostName+actualURL;
                                 $rootScope.$apply(function(){
                                     $scope.currentSlideView = 3;
@@ -551,6 +552,13 @@
             });
         }
 
+        function cleanServerImages() {
+            imageBank.cleanServerImages(hostedImageArray).then(function(data){
+
+            },function(data){
+
+            });
+        }
         $scope.postCollageOnFacebook = function() {
 
           var postCallback = function() {
@@ -570,6 +578,7 @@
                               heading : appConfig.errorMessage["1011"].name,
                               message : appConfig.errorMessage["1011"].message,
                               callback1 : function() {
+                                  cleanServerImages();
                                   window.location.href = "#/History";
                               },
                               callback2 : function() {},
@@ -587,6 +596,7 @@
                                   heading : appConfig.errorMessage["1011"].name,
                                   message : appConfig.errorMessage["1011"].message,
                                   callback1 : function() {
+                                      cleanServerImages();
                                       window.location.href = "#/History";
                                   },
                                   callback2 : function() {},

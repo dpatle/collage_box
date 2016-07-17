@@ -12,30 +12,27 @@
 <img id="testImage"/>
 <script>
     function sendRequesst() {
-        convertImgToDataURLviaCanvas($("#urlInput").val(),function(data){
             var data = {
-                blob : data,
-                id : 'testURL' + new Date().getTime() + ".jpeg"
+                imageArray : "test1.txt,test2.txt"
             };
 
-           /* $.ajax({
-                type: "POST",
-                url: "http://localhost:8080/saveBlobImage",
+            $.ajax({
+                type: "DELETE",
+                url: "http://localhost:8080/cleanHostedImages",
                 data: data,
                 success: function(data){
-                    $('#testImage').attr('src',data);
+                   console.log(data);
                 }
-            });*/
-            $.post("http://localhost:8080/saveBlobImage",
+            });
+            /*$.del("http://localhost:8080/cleanHostedImages",
                     data).done(function (data) {
                         console.log(data);
                     }).fail(function (err) {
                         console.log(err);
                     });
+*/
 
 
-
-        },undefined);
 
     }
 

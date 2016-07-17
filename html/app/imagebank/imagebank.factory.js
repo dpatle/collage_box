@@ -69,6 +69,26 @@
             img.src = url;
         }
 
+        imageBankAPI.cleanServerImages = function(hostedImageArray) {
+            var APIEndPoint = appConfig.apiEndPoint+"cleanHostedImages";
+            var promise = new Promise(function(resolve,reject) {
+                $.ajax({
+                    type: "DELETE",
+                    url: APIEndPoint,
+                    data: {
+                        imageArray : hostedImageArray
+                    },
+                    success: function(data){
+                        resolve(data);
+                    },
+                    error : function(err) {
+                        reject(err);
+                    }
+                });
+            });
+            return promise;
+        }
+
         return imageBankAPI;
     }
 })();
