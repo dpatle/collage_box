@@ -30,7 +30,7 @@
     width: 686px;
     height: 456px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 .recent-photos:last-of-type {
     margin-bottom: 60px;

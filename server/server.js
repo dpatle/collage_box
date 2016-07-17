@@ -71,6 +71,10 @@ function deleteHostedImages(imageArray,callback) {
     }
 }
 
+function respondForSendMessage(req,res,next) {
+
+}
+
 function getQueryVariable(query,variable) {
     var vars = query.split('&');
     for (var i = 0; i < vars.length; i++) {
@@ -93,7 +97,8 @@ server.use(
 );
 server.post('/saveBlobImage', respondForStoreBlobImage);
 server.get('/saveFacebookImage', respondForStoreFacebookImage);
-server.del('/cleanHostedImages', respondForCleanHostedImages);
+server.del('/cleanHostedImages', respondForCleanHostedImages)
+server.post('/sendMessage',respondForSendMessage);
 
 server.listen(8080, function() {
     console.log('%s listening at %s', server.name, server.url);
