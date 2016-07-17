@@ -35,17 +35,36 @@
             });
         };
 
-        var handleFacebookUploadError = function() {
-            popUpFactory.showPopUp({
-                heading : appConfig.errorMessage["1003"].name,
-                message : appConfig.errorMessage["1003"].message,
-                callback1 : function() {},
-                callback2 : function() {},
-                buttonText1 : "Okay",
-                buttonText2 : "",
-                showButton1 : true,
-                showButton2 : false
-            });
+        var handleFacebookUploadError = function(error) {
+            if(response.error.code===200) {
+                popUpFactory.showPopup({
+                    heading : appConfig.errorMessage["1013"].name,
+                    message : "Approve - "+response.error.message+", And try again. ",
+                    callback1 : function() {
+                        facebookAuth.doLogin().then(function(response){
+
+                        },function(error){
+
+                        });
+                    },
+                    callback2 : function() {},
+                    buttonText1 : "Approve",
+                    buttonText2 : "Decline",
+                    showButton1 : true,
+                    showButton2 : true
+                });
+            } else {
+                popUpFactory.showPopUp({
+                    heading : appConfig.errorMessage["1003"].name,
+                    message : appConfig.errorMessage["1003"].message,
+                    callback1 : function() {},
+                    callback2 : function() {},
+                    buttonText1 : "Okay",
+                    buttonText2 : "",
+                    showButton1 : true,
+                    showButton2 : false
+                });
+            }
         };
 
         //First slide code here

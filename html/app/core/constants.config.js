@@ -54,6 +54,10 @@
                 1012 : {
                     name : "Sharing on Facebook",
                     message : "This collage will be posted on Facebook on behalf of you!"
+                },
+                1013 : {
+                    name : "Approve missing permission",
+                    message : "In order to perform this action, you need to approve missing permission(s)"
                 }
             },
             colorCodes : ["#ee0b41","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#ff9c00","#FFFFFF"],

@@ -456,7 +456,7 @@ svg {
 
 #progress-bar {
     position: fixed;
-    height: 5px;
+    height: 10px;
     top: 0px;
     left: 0px;
     background-color: #ee0b41;
