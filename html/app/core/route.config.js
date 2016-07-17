@@ -11,7 +11,10 @@
     configureRoutes.$inject = ['$routeProvider','$locationProvider'];
 
     function configureRoutes($routeProvider,$locationProvider) {
-        $locationProvider.html5Mode(true).hashPrefix('*');
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
        var routes = getRoutes();
         routes.forEach(function(route) {
             $routeProvider.when(route.url, route.config);
