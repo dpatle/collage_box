@@ -50,7 +50,7 @@ function respondForStoreBlobImage(req, res, next) {
 
 
 function respondForCleanHostedImages(req,res,next) {
-    var imageArray = req.params["imageArray"].split(',');
+    var imageArray = req.params["imageArray"];
     deleteHostedImages(imageArray,function(){
         res.send(201,"deleted");
         next();

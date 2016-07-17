@@ -4,7 +4,7 @@
 (function(){
     'use strict';
     angular.module('app')
-        .controller('historyCtrl',privacyCtrlFunction);
+        .controller('privacyCtrl',privacyCtrlFunction);
 
     privacyCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory'];
 
