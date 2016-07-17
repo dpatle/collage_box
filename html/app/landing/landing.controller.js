@@ -13,32 +13,25 @@
         $rootScope.showSpinner = false;
         landingScope.doLogin = function(){
             $rootScope.showSpinner = true;
-            var isLoggedInPromise = facebookAuth.isLoggedIn();
-            isLoggedInPromise.then(function(){
+            facebookAuth.doLogin().then(function(response){
                 $rootScope.showSpinner = false;
-                landingScope.changeView("Home");
+                if(response.status === "connected"){
+                    landingScope.changeView("Home");
+                }
+                else{
+                    popUpFactory.showPopUp({
+                        heading : appConfig.errorMessage["1001"].name,
+                        message : appConfig.errorMessage["1001"].message,
+                        callback1 : function() {},
+                        callback2 : function() {},
+                        buttonText1 : "Okay",
+                        buttonText2 : "",
+                        showButton1 : true,
+                        showButton2 : false
+                    });
+                    $rootScope.$apply();
+                }
                 $scope.$apply();
-            },function(){
-                facebookAuth.doLogin().then(function(response){
-                    $rootScope.showSpinner = false;
-                    if(response.status === "connected"){
-                        landingScope.changeView("Home");
-                    }
-                    else{
-                        popUpFactory.showPopUp({
-                            heading : appConfig.errorMessage["1001"].name,
-                            message : appConfig.errorMessage["1001"].message,
-                            callback1 : function() {},
-                            callback2 : function() {},
-                            buttonText1 : "Okay",
-                            buttonText2 : "",
-                            showButton1 : true,
-                            showButton2 : false
-                        });
-                        $rootScope.$apply();
-                    }
-                    $scope.$apply();
-                });
             });
         };
 

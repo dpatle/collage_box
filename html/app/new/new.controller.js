@@ -598,7 +598,7 @@
                               message : appConfig.errorMessage["1011"].message,
                               callback1 : function() {
                                   cleanServerImages();
-                                  window.location.href = "#/History";
+                                  window.location.href = "/History";
                               },
                               callback2 : function() {},
                               buttonText1 : "Okay",
@@ -616,9 +616,12 @@
                                   message : appConfig.errorMessage["1011"].message,
                                   callback1 : function() {
                                       cleanServerImages();
-                                      window.location.href = "#/History";
+                                      window.location.href = "/History";
                                   },
-                                  callback2 : function() {},
+                                  callback2 : function() {
+                                      cleanServerImages();
+                                      window.location.href = "/History";
+                                  },
                                   buttonText1 : "Okay",
                                   buttonText2 : "",
                                   showButton1 : true,

@@ -8,9 +8,10 @@
         .module('app')
         .config(configureRoutes);
 
-    configureRoutes.$inject = ['$routeProvider'];
+    configureRoutes.$inject = ['$routeProvider','$locationProvider'];
 
-    function configureRoutes($routeProvider) {
+    function configureRoutes($routeProvider,$locationProvider) {
+        $locationProvider.html5Mode(true).hashPrefix('*');
        var routes = getRoutes();
         routes.forEach(function(route) {
             $routeProvider.when(route.url, route.config);

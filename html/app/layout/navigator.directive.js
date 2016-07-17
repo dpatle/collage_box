@@ -12,7 +12,7 @@
                         message : appConfig.errorMessage["1004"].message,
                         callback1 : function() {
                             facebookAuth.doLogout().then(function(data){
-                                window.location.href = "#/";
+                                window.location.href = "/";
                             },function(data){
                                 popUpFactory.showPopUp({
                                     heading : appConfig.errorMessage["1006"].name,

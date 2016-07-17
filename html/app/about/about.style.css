@@ -37,4 +37,6 @@
     font-family: ubuntu-light;
     font-size: 18px;
     text-overflow: ellipsis;
+    padding-left:  10px;
+    padding-right: 10px;
 }
