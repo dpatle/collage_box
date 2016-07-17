@@ -6,9 +6,9 @@
     angular.module('app')
         .controller('newCtrl',newCtrlFunction);
 
-    newCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory','imageBank','$timeout','$q','$interval'];
+    newCtrlFunction.$inject = ['$scope','facebookGraph','$rootScope','appConfig','popUpFactory','imageBank','$timeout','$q','$interval','facebookAuth'];
 
-    function newCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory,imageBank,$timeout,$q,$interval){
+    function newCtrlFunction($scope,facebookGraph,$rootScope,appConfig,popUpFactory,imageBank,$timeout,$q,$interval,facebookAuth){
         $rootScope.showSpinner = false;
         $scope.selectivePhotos = [];
         $scope.nextPhotosPage = null;
@@ -36,10 +36,10 @@
         };
 
         var handleFacebookUploadError = function(error) {
-            if(response.error.code===200) {
-                popUpFactory.showPopup({
+            if(error.error.code===200) {
+                popUpFactory.showPopUp({
                     heading : appConfig.errorMessage["1013"].name,
-                    message : "Approve - "+response.error.message+", And try again. ",
+                    message : "Approve - "+error.error.message+", And try again. ",
                     callback1 : function() {
                         facebookAuth.doLogin().then(function(response){
 
@@ -53,7 +53,7 @@
                     showButton1 : true,
                     showButton2 : true
                 });
-            } else {
+            }  else {
                 popUpFactory.showPopUp({
                     heading : appConfig.errorMessage["1003"].name,
                     message : appConfig.errorMessage["1003"].message,
