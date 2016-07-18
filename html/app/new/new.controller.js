@@ -13,6 +13,7 @@
         $scope.selectivePhotos = [];
         $scope.nextPhotosPage = null;
         $scope.currentSlideView = 1;
+        $scope.noDataFound = false;
         $scope.slidePosition = {
             'left' : (0 - ( $scope.currentSlideView - 1 ) * 100) +"%"
         };
@@ -105,6 +106,7 @@
                 } else {
                     $scope.currentSlideView = toView;
                 }
+                attachDragEventForFirefox();
             } else if($scope.currentSlideView === 3 && toView===2) {
                 $scope.currentSlideView = toView;
             } else if(toView === 1) {
@@ -168,7 +170,23 @@
                     $rootScope.showSpinner = false;
                     $scope.$apply();
                 }
-                $scope.nextPhotosPage = response.paging.next ? response.paging.cursors.after : null;
+                $scope.nextPhotosPage = response.paging && response.paging.next ? response.paging.cursors.after : null;
+                if(!repose.data || response.data.length===0) {
+                    $scope.noDataFound = true;
+                    $rootScope.showSpinner = false;
+                    popUpFactory.showPopUp({
+                        heading : appConfig.errorMessage["1014"].name,
+                        message : appConfig.errorMessage["1014"].message,
+                        callback1 : function() {
+                            window.location.href = "/Home";
+                        },
+                        callback2 : function() {},
+                        buttonText1 : "Okay",
+                        buttonText2 : "",
+                        showButton1 : true,
+                        showButton2 : false
+                    });
+                }
             },function(response){
                 popUpFactory.showPopUp({
                     heading : appConfig.errorMessage["1007"].name,

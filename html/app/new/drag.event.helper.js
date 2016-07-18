@@ -39,3 +39,13 @@ function drop(ev) {
         angular.element("#new-view").scope().onPhotoDrop(currentIndex,currentDraggingBackground);
     };
 }
+
+function attachDragEventForFirefox() {
+    var dragItems = document.querySelectorAll('[draggable=true]');
+    for (var i = 0; i < dragItems.length; i++) {
+        addEvent(dragItems[i], 'dragstart', function (event) {
+            event.dataTransfer.setData('Text', this.id);
+            event.stopPropagation();
+        });
+    }
+}

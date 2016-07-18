@@ -463,3 +463,7 @@ svg {
     transition: all 3s linear;
     -webkit-transition: all 0.5s linear;
 }
+
+[draggable=true] {
+    -khtml-user-drag: element;
+}

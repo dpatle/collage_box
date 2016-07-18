@@ -52,12 +52,16 @@
                     message : "Your collage has been posted to Facebook!"
                 },
                 1012 : {
-                    name : "Sharing on Facebook",
+                    name : "Posting on Facebook",
                     message : "This collage will be posted on Facebook on behalf of you!"
                 },
                 1013 : {
                     name : "Approve missing permission",
                     message : "In order to perform this action, you need to approve missing permission(s)"
+                },
+                1014 : {
+                    name : "No photos found",
+                    message : "You don't found any photos associated with you on Facebook !"
                 }
             },
             colorCodes : ["#ee0b41","#CFF09E","#A8DBA8","#000000","#44749D","#C6D4E1","#ff9c00","#FFFFFF"],

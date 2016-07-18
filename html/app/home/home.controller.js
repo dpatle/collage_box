@@ -64,7 +64,7 @@
                     expectedPhotoLength = appConfig.windowWidth/200 * appConfig.windowHeight/200,
                     currentLength = responseData.length;
 
-                for(var i=0;i < expectedPhotoLength/currentLength; i++) {
+                for(var i=0; i < (currentLength>0 ? expectedPhotoLength/currentLength : 0); i++) {
                     responseData = responseData.concat(responseData);
                 }
 
