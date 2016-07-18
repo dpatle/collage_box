@@ -38,5 +38,6 @@
         landingScope.changeView = function(view){
             $location.path(view);
         }
+        showHiddenElements();
     }
 })();

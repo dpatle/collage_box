@@ -112,6 +112,7 @@
             fetchUserInfo();
             createUserPictureTile();
             fetchBackgroundPictures();
+            showHiddenElements();
         }
 
         init();

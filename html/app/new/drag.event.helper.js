@@ -40,12 +40,35 @@ function drop(ev) {
     };
 }
 
+var addEvent = function() {
+    if(typeof addEventListener !== "undefined") {
+        return function(obj, evt, fn) {
+            obj.addEventListener(evt, fn, false);
+        };
+    } else {
+        return function(obj, evt, fn) {
+            obj.attachEvent("on" + evt, fn);
+        };
+    }
+}();
+
 function attachDragEventForFirefox() {
-    var dragItems = document.querySelectorAll('[draggable=true]');
-    for (var i = 0; i < dragItems.length; i++) {
-        addEvent(dragItems[i], 'dragstart', function (event) {
-            event.dataTransfer.setData('Text', this.id);
-            event.stopPropagation();
+    var links = document.querySelectorAll('.drag-photo'), el = null;
+    for (var i = 0; i < links.length; i++) {
+        el = links[i];
+
+        el.setAttribute('draggable', 'true');
+
+        addEvent(el, 'dragstart', function (e) {
+            e.dataTransfer.effectAllowed = 'copy'; // only dropEffect='copy' will be dropable
+            e.dataTransfer.setData('Text', this.id); // required otherwise doesn't work
         });
     }
+}
+
+//showing elements which are not shown in some browsers
+function showHiddenElements() {
+    setTimeout(function(){
+        $(".tile-block,#create-new-button,#home-message,.logo-element,#landing-subtitle,.landing-frames,.home-login-button").css("opacity","1");
+    },3000);
 }
