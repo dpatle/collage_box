@@ -466,4 +466,5 @@ svg {
 
 [draggable=true] {
     -khtml-user-drag: element;
+    cursor: move;
 }
