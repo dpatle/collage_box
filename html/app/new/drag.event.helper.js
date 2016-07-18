@@ -66,9 +66,3 @@ function attachDragEventForFirefox() {
     }
 }
 
-//showing elements which are not shown in some browsers
-function showHiddenElements() {
-    setTimeout(function(){
-        $(".tile-block,#create-new-button,#home-message,.logo-element,#landing-subtitle,.landing-frames,.home-login-button").css("opacity","1");
-    },3000);
-}

@@ -433,6 +433,14 @@
                     }]
             }];
 
+        function changeGridPrototypeValueInFirefox() {
+            for(var i=0; i< $scope.gridPrototypes.length; i++)  {
+                $scope.gridPrototypes[i].style = {
+                    "background-position" : $scope.gridPrototypes[i].style["background-position-x"] + " 0%"
+                };
+            }
+        }
+
         $scope.colorCubes = [];
         $scope.currentBorderColor = {
                 "background-color" : "#FFFFFF",
@@ -678,6 +686,7 @@
 
 
         var init = function() {
+            (getBrowser().name === "Firefox") && changeGridPrototypeValueInFirefox();
             fetchUserInfo();
             $scope.appendSelectivePhotos();
             createColorCubes();
